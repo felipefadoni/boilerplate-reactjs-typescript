@@ -1,0 +1,17 @@
+version: '3'
+services:
+  boilerplatereactjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: boilerplatereactjs
+    restart: unless-stopped
+    container_name: boilerplatereactjs
+    env_file: .env
+    environment:
+      - PORT=$PORT
+    ports:
+      - '4000:4000'
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
